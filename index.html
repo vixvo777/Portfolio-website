@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hemant | Portfolio</title>
+  <link rel="stylesheet" href="Style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+  <div class="figma-glow"></div>
+
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <div class="logo-area">
+      <img src="logo.svg" alt="Logo" />
+      <div class="kanji">平満翔</div>
+    </div>
+
+    <div class="center-nav">
+     <button onclick="location.href='index.html'" class="active">Portfolio</button>
+      <button onclick="location.href='info.html'">Info</button>
+      <div class="nav-indicator"></div> <!-- This is the sliding bar -->
+    </div>
+
+
+   <div class="right-links">
+      <a href="https://www.instagram.com/_vixvo/" target="_blank">Instagram</a>
+      <a href="https://www.linkedin.com/posts/hemant-malviya-82872825b_showreel2024-videoeditor-3d-activity-7282058799908110336-Cv-6/?utm_source=social_share_send&utm_medium=android_app&rcm=ACoAAEAAYKABEGWyuX9QHnmvgK_JB7vQSyrjb7Y&utm_campaign=whatsapp" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+
+  <!-- Emoji Bar + Shine -->
+  <div class="emoji-container">
+    <img src="Group 6.svg" alt="emoji1" />
+    <img src="Star 1.svg" alt="emoji2" />
+    <img src="Star 2.svg" alt="emoji3" />
+    <img src="Group 5.svg" alt="emoji4" />
+    <img src="Star 3.svg" alt="emoji5" />
+    <img src="Vector 1.svg" alt="emoji6" />
+  </div>
+  <div class="shine-line"></div>
+
+  <!-- Hero Text + Stroke -->
+  <div class="content">
+    <h1>Frames with Feelings<br><strong>Cuts</strong> with Character</h1>
+    <img src="Vector 2.svg" alt="Sketch Stroke" class="sketch-stroke" />
+  </div>
+
+  <!-- Down Arrow -->
+  <div class="down-arrow">
+    <img src="keyboard_arrow_up.svg" alt="Down Arrow" />
+  </div>
+
+  <section class="work-section">
+    <div class="video-card">
+      <div class="card-header">
+        <div class="card-title">Chaotic Delhi</div>
+        <div class="card-subtitle">Cinematic</div>
+        <div class="card-arrow">↗</div>
+      </div>
+      <div class="card-thumbnail">
+        <a href="https://youtu.be/X_jOTWFOi8A"  target="_blank"><img src="Screenshot 2025-06-20 20074511.png" alt="Video" /></a>
+      </div>
+    </div>
+  </section>
+  <section class="work-section">
+    <div class="video-card">
+      <div class="card-header">
+        <div class="card-title">Every end is a new beginning</div>
+        <div class="card-subtitle">Roster Revel</div>
+        <div class="card-arrow">↗</div>
+      </div>
+      <div class="card-thumbnail">
+        <a href="https://www.instagram.com/reel/C9bvYm1IfwG/?utm_source=ig_web_copy_link&igsh=Y3VnbXhmdmgyeWQ5"  target="_blank"><img src="Screenshot 2025-06-20 2007451111.png" alt="Video" /></a>
+      </div>
+    </div>
+  </section>
+  <section class="work-section">
+    <div class="video-card">
+      <div class="card-header">
+        <div class="card-title">Gravitas</div>
+        <div class="card-subtitle">Brand identity</div>
+        <div class="card-arrow">↗</div>
+      </div>
+      <div class="card-thumbnail">
+        <a href="https://www.behance.net/gallery/223413605/Brand-identity-Gravitas" target="_blank"><img src="image.png" alt="Video" /></a>
+      </div>
+    </div>
+  </section>
+
+<footer class="footer">
+  <div class="footer-top">
+    <button onclick="location.href='Allproject.html'" class="all-projects-btn">All Projects</button>
+    <div class="emoji-footer">
+      <img src="Group 6.svg" />
+      <img src="Star 1.svg" />
+      <img src="Star 2.svg" />
+      <img src="Group 5.svg" />
+      <img src="Star 3.svg" />
+      <img src="Vector 1.svg" />
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-left">
+      <img src="logo.svg" alt="Logo" class="footer-logo" />
+      <p>© 2025 Hemant Malviya. All Rights Reserved.</p>
+    </div>
+    <div class="footer-right">
+      <div class="footer-links">
+        <p><strong>Site Map</strong></p>
+        <a href="index.html">Portfolio</a>
+        <a href="Info.html">Info</a>
+        <a href="Allproject.html">All Projects</a>
+      </div>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/posts/hemant-malviya-82872825b_showreel2024-videoeditor-3d-activity-7282058799908110336-Cv-6/?utm_source=social_share_send&utm_medium=android_app&rcm=ACoAAEAAYKABEGWyuX9QHnmvgK_JB7vQSyrjb7Y&utm_campaign=whatsapp"><img src="Linkedin.svg" alt="LinkedIn" /></a>
+        <a href="https://www.instagram.com/_vixvo/"><img src="Instagram.svg" alt="Instagram" /></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+<script>
+    // Nav Indicator Movement
+    const buttons = document.querySelectorAll('.nav-btn');
+    const indicator = document.getElementById('navIndicator');
+
+    function updateIndicator(el) {
+      indicator.style.width = `${el.offsetWidth}px`;
+      indicator.style.left = `${el.offsetLeft}px`;
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => updateIndicator(btn));
+    });
+
+    window.addEventListener('load', () => {
+      const current = location.pathname.split("/").pop();
+      const active = [...buttons].find(btn => btn.dataset.page === current);
+      updateIndicator(active || buttons[0]);
+    });
+
+    function navigateTo(page) {
+      window.location.href = page;
+    }
+
+    // GSAP Animations
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.from(".content h1", {
+      y: 60,
+      opacity: 0,
+      duration: 1.2,
+      ease: "power2.out"
+    });
+
+    gsap.utils.toArray(".video-card").forEach(card => {
+      gsap.from(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: "top 80%"
+        },
+        y: 30,
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out"
+      });
+    });
+  </script>
+
+  <script>
+  window.addEventListener('scroll', () => {
+    const contactBox = document.querySelector('.contact-box');
+    const rect = contactBox.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight - 100;
+
+    if (isVisible) {
+      contactBox.classList.add('visible');
+    }
+  });
+</script>
+
+
+</html>
