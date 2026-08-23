@@ -490,16 +490,24 @@ html {
 }
 
 .about-content {
+  width: 900px;
+  height: 500px;
+  margin: 0 auto 12px auto; /* Centered left/right, keeps your 12px bottom margin */
+  
+  display: grid;            /* Fix: Added so place-items actually works */
+  place-items: center;
+  
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   overflow: hidden;
-  margin-bottom: 12px;
 }
 
 .about-image img {
-  width: 100%;
-  height: auto;
+  width: 900px;
+  height: 500px;
+  object-fit: cover;
+  object-position: center;
   display: block;
   background: linear-gradient(to bottom right, #1c1c1c, #141414);
 }
