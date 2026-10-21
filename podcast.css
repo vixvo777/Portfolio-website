@@ -149,7 +149,7 @@ body.podcast-page {
 /* ==========================================================================
    1. HERO
    ========================================================================== */
-.hero { min-height: 100vh; min-height: 100svh; display: grid; place-items: center; padding: 120px 24px 90px; overflow: hidden; }
+.hero { min-height: 100vh; min-height: 100svh; display: grid; place-items: center; padding: 10px 24px 130px; overflow: hidden; }
 .hero__title {
   position: absolute; inset: 0; z-index: 1; margin: 0; padding-top: 4vh;
   display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
