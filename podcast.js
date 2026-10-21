@@ -239,7 +239,8 @@
       if (curScene === s) return;
       curScene = s;
       gsap.to(root, { '--c1': s.dataset.c1, '--c2': s.dataset.c2, duration: reduce ? 0 : 1.1, ease: 'power2.out', overwrite: 'auto' });
-      ctaFixed.classList.toggle('is-hidden', s.id === 'cta');
+      ctaFixed.classList.toggle('is-hidden', s.id === 'cta' || s.id === 'footer');
+      $('#secLabel').classList.toggle('is-hidden', s.id === 'footer');
       if (reduce) { labelEl.textContent = s.dataset.label; return; }
       gsap.to(labelEl, {
         yPercent: -110, duration: 0.22, ease: 'power2.in', overwrite: true,
@@ -551,6 +552,41 @@
       });
     }
     weightField(ctaTitle.parentNode, ctaChars);
+
+
+    /* ---------------- FOOTER ---------------- */
+    (() => {
+      const card = $('#pfCard'), mark = $('#pfMark'), wrapEl = $('.pf__content');
+      // Fit the wordmark edge to edge
+      const fit = () => {
+        mark.style.fontSize = '100px';
+        const avail = wrapEl.clientWidth - parseFloat(getComputedStyle(wrapEl).paddingLeft) * 2;
+        const natural = mark.scrollWidth || 1;
+        mark.style.fontSize = Math.floor(100 * (avail / natural) * 0.985) + 'px';
+      };
+      fit();
+      window.addEventListener('resize', fit);
+      if (document.fonts) document.fonts.ready.then(fit);
+
+      const figs = $$('.fig-wrap', card), streaks = $$('.pf__streaks i', card);
+      if (!reduce) {
+        figs.forEach((f) => gsap.to(f, { x: rand(-10, 10), skewX: rand(-1.6, 1.6), duration: rand(3.2, 5.5), yoyo: true, repeat: -1, ease: 'sine.inOut' }));
+        streaks.forEach((s) => gsap.to(s, { xPercent: rand(-7, 7), duration: rand(6, 11), yoyo: true, repeat: -1, ease: 'sine.inOut' }));
+      }
+      if (fine) {
+        const g = { x: 62 };
+        const setX = (v) => { gsap.to(g, { x: v, duration: 0.9, ease: 'power3', overwrite: true, onUpdate: () => card.style.setProperty('--gx', g.x + '%') }); };
+        const par = figs.map((f) => gsap.quickTo(f, 'xPercent', { duration: 1, ease: 'power3' }));
+        card.addEventListener('pointermove', (e) => {
+          const r = card.getBoundingClientRect();
+          const nx = (e.clientX - r.left) / r.width;
+          setX(clamp(nx * 100, 8, 92));
+          figs.forEach((f, i) => par[i]((0.5 - nx) * 22 * parseFloat(f.dataset.d)));
+        });
+        card.addEventListener('pointerleave', () => { setX(62); par.forEach((p) => p(0)); });
+      }
+      $('#pfTop').addEventListener('click', () => scrollToY(0));
+    })();
 
     /* ---------------- Go ---------------- */
     ScrollTrigger.refresh();

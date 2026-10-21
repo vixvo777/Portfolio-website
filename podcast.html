@@ -10,7 +10,7 @@
        Body copy and the nav keep using your SF Pro Display files from Style.css. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Unbounded:wght@300..900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@200..500&family=Unbounded:wght@300..900&display=swap" rel="stylesheet" />
 
   <script>document.documentElement.classList.add("js")</script>
   <link rel="stylesheet" href="Style.css" />
@@ -37,21 +37,16 @@
   </div>
 
   <!-- Current section name -->
-  <p class="sec-label" aria-live="polite"><span class="sec-label__mask"><span id="secLabelText">The trailer</span></span><span class="sec-label__arrow" aria-hidden="true">↓</span></p>
+  <p class="sec-label" id="secLabel" aria-live="polite"><span class="sec-label__mask"><span id="secLabelText">The trailer</span></span><span class="sec-label__arrow" aria-hidden="true">↓</span></p>
 
   <!-- Navigation (same markup as your other pages, plus Podcast) -->
-  <div class="navbar">
+  <div class="navbarr">
     <div class="logo-area">
       <img src="logo.svg" alt="Logo" />
       <div class="kanji">平満翔</div>
     </div>
 
-    <div class="center-nav">
-      <button onclick="location.href='index.html'">Portfolio</button>
-      <button onclick="location.href='podcast.html'" class="active">Podcast</button>
-      <button onclick="location.href='Info.html'">Info</button>
-      <div class="nav-indicator"></div>
-    </div>
+    
 
     <div class="right-links">
       <a href="https://www.instagram.com/_vixvo/" target="_blank" rel="noopener">Instagram</a>
@@ -59,7 +54,7 @@
     </div>
   </div>
 
-  <a class="cta-fixed" id="ctaFixed" href="Info.html#contact" data-magnetic>Book an edit</a>
+  <a class="cta-fixed" id="ctaFixed" href="connect.html" data-magnetic>Connect</a>
 
   <main id="main">
 
@@ -192,14 +187,14 @@
         </article>
 
         <article class="case case--slot">
-          <a class="case__link" href="Info.html#contact" data-cursor="Send files">
+          <a class="case__link" href="connect.html" data-cursor="Send files">
             <div class="case__media slot__wave" aria-hidden="true"></div>
             <div class="case__meta"><h3>Your trailer</h3><p>Send the raw episode and get a teaser back.</p></div>
           </a>
         </article>
 
         <article class="case case--slot">
-          <a class="case__link" href="Info.html#contact" data-cursor="Send files">
+          <a class="case__link" href="connect.html" data-cursor="Send files">
             <div class="case__media slot__wave slot__wave--b" aria-hidden="true"></div>
             <div class="case__meta"><h3>Your next episode</h3><p>Send the raw files and get a finished edit back.</p></div>
           </a>
@@ -215,40 +210,53 @@
         <span class="line" aria-hidden="true">the raw files</span>
       </h2>
       <p class="body cta__copy">Tell me about your show and I'll reply with how I'd cut it.</p>
-      <a class="btn-pill" href="Info.html#contact" data-magnetic>Book an edit</a>
+      <a class="btn-pill" href="connect.html" data-magnetic>Book an edit</a>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="footer-top">
-      <button onclick="location.href='Allproject.html'" class="all-projects-btn">All Projects</button>
-      <div class="emoji-footer">
-        <img src="Group 6.svg" alt="" />
-        <img src="Star 1.svg" alt="" />
-        <img src="Star 2.svg" alt="" />
-        <img src="Group 5.svg" alt="" />
-        <img src="Star 3.svg" alt="" />
-        <img src="Vector 1.svg" alt="" />
+  <footer class="pf scene" id="footer" data-label="The end" data-c1="#1E1E1E" data-c2="#0B0B0B">
+    <div class="pf__card" id="pfCard">
+      <div class="pf__sky" aria-hidden="true">
+        <div class="pf__glow"></div>
+        <div class="pf__streaks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="pf__fade"></div>
       </div>
-    </div>
 
-    <div class="footer-bottom">
-      <div class="footer-left">
-        <img src="logo.svg" alt="Logo" class="footer-logo" />
-        <p>© 2025 Hemant Malviya. All Rights Reserved.</p>
-      </div>
-      <div class="footer-right">
-        <div class="footer-links">
-          <p><strong>Site Map</strong></p>
-          <a href="index.html">Portfolio</a>
-          <a href="podcast.html">Podcast</a>
-          <a href="Info.html">Info</a>
-          <a href="Allproject.html">All Projects</a>
+      <div class="pf__content">
+        <div class="pf__row pf__row--top">
+          <nav class="pf__nav" aria-label="Site map">
+            <a class="roll" href="index.html" data-t="Portfolio"><span>Portfolio</span></a>
+            <a class="roll" href="podcast.html" data-t="Podcast" aria-current="page"><span>Podcast</span></a>
+            <a class="roll" href="Info.html" data-t="Info"><span>Info</span></a>
+            <a class="roll" href="Allproject.html" data-t="All Projects"><span>All Projects</span></a>
+          </nav>
+
+          <div class="pf__mid">
+            <p class="pf__label">Start an edit:</p>
+            <p class="pf__text">Send the raw files and I'll reply with how I'd cut your episode.</p>
+            <div class="pf__social">
+              <a href="https://www.linkedin.com/posts/hemant-malviya-82872825b_showreel2024-videoeditor-3d-activity-7282058799908110336-Cv-6/?utm_source=social_share_send&utm_medium=android_app&rcm=ACoAAEAAYKABEGWyuX9QHnmvgK_JB7vQSyrjb7Y&utm_campaign=whatsapp" aria-label="LinkedIn" target="_blank" rel="noopener" data-magnetic><img src="Linkedin.svg" alt="" /></a>
+              <a href="https://www.instagram.com/_vixvo/" aria-label="Instagram" target="_blank" rel="noopener" data-magnetic><img src="Instagram.svg" alt="" /></a>
+            </div>
+          </div>
+
+          <div class="pf__right">
+            <p class="pf__text pf__text--r">Podcast trailers, full edits and clips.</p>
+            <a class="pf__badge" href="connect.html" data-cursor="Book">
+              <img src="logo.svg" alt="" />
+              <span>Video editor</span>
+              <small>Hemant Malviya</small>
+            </a>
+          </div>
         </div>
-        <div class="social-icons">
-          <a href="https://www.linkedin.com/posts/hemant-malviya-82872825b_showreel2024-videoeditor-3d-activity-7282058799908110336-Cv-6/?utm_source=social_share_send&utm_medium=android_app&rcm=ACoAAEAAYKABEGWyuX9QHnmvgK_JB7vQSyrjb7Y&utm_campaign=whatsapp"><img src="Linkedin.svg" alt="LinkedIn" /></a>
-          <a href="https://www.instagram.com/_vixvo/"><img src="Instagram.svg" alt="Instagram" /></a>
+
+        <div class="pf__row pf__row--bottom">
+          <p class="pf__small">© 2026 Hemant Malviya.<br />All Rights Reserved.</p>
+          <button class="pf__small pf__topbtn" id="pfTop" type="button" data-cursor="Top">Back to top</button>
+          <p class="pf__small pf__small--r">Handmade by Hemant</p>
         </div>
+
+        <p class="pf__mark" id="pfMark" aria-label="VIXVO Podcast"><span class="pf__heavy" aria-hidden="true">OBLIQN</span> <span class="pf__light" aria-hidden="true">Studio</span></p>
       </div>
     </div>
   </footer>

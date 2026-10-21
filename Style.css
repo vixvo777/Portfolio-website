@@ -92,6 +92,19 @@ html {
   );
  
 }
+.navbarr {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: transparent;
+}
+
 .logo-area {
       display: flex;
       flex-direction: column;

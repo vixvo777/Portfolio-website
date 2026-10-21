@@ -33,7 +33,6 @@ body.podcast-page {
   -webkit-font-smoothing: antialiased;
 }
 .podcast-page main { position: relative; z-index: 2; }
-.podcast-page .footer { position: relative; z-index: 2; padding-bottom: 80px; }
 .podcast-page :focus-visible {
   outline: 2px solid #fff;
   outline-offset: 3px;
@@ -104,6 +103,8 @@ body.podcast-page {
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   color: #fff; font: 400 12px/1 var(--f-mono);
 }
+.sec-label { transition: opacity .3s; }
+.sec-label.is-hidden { opacity: 0; pointer-events: none; }
 .sec-label__mask { display: block; overflow: hidden; line-height: 1.3; }
 .sec-label__mask span { display: block; }
 
@@ -329,6 +330,79 @@ body.podcast-page {
 .cta__copy { color: #2b0d04; text-align: center; font-size: 18px; }
 .cta .btn-pill { padding: 18px 34px; font-size: 15px; }
 
+
+/* ==========================================================================
+   Footer: glowing card with light streaks and blurred silhouettes
+   ========================================================================== */
+.pf { position: relative; z-index: 2; background: #070707; padding: 10px 10px 46px; --f-soft: 'Manrope', var(--f-body); }
+.pf__card {
+  --gx: 62%;
+  position: relative; display: flex; flex-direction: column; min-height: min(96vh, 860px);
+  border-radius: 30px; overflow: hidden; background: #0a0a0a; isolation: isolate; font-family: var(--f-soft);
+}
+.pf__sky { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.pf__glow {
+  position: absolute; left: -10%; right: -10%; bottom: -26%; height: 108%; filter: blur(42px);
+  background:
+    radial-gradient(54% 58% at var(--gx) 76%, #ffd2a0 0%, #ff9a3c 30%, rgba(229, 56, 28, .92) 56%, rgba(229, 56, 28, 0) 82%),
+    radial-gradient(40% 50% at 6% 92%, rgba(255, 138, 31, .85), rgba(255, 138, 31, 0) 72%),
+    radial-gradient(36% 46% at 98% 92%, rgba(229, 56, 28, .75), rgba(229, 56, 28, 0) 72%);
+}
+.pf__streaks { position: absolute; inset: 0; mix-blend-mode: screen; }
+.pf__streaks i { position: absolute; left: -15%; width: 130%; border-radius: 50%; filter: blur(5px); background: linear-gradient(90deg, transparent, rgba(255, 150, 60, .55) 22%, rgba(255, 214, 160, .9) 52%, rgba(255, 150, 60, .5) 80%, transparent); }
+.pf__streaks i:nth-child(1) { top: 56%; height: 3px; opacity: .8; }
+.pf__streaks i:nth-child(2) { top: 61%; height: 12px; opacity: .45; }
+.pf__streaks i:nth-child(3) { top: 66%; height: 2px; opacity: .9; }
+.pf__streaks i:nth-child(4) { top: 71%; height: 18px; opacity: .35; }
+.pf__streaks i:nth-child(5) { top: 76%; height: 4px; opacity: .7; }
+.pf__streaks i:nth-child(6) { top: 82%; height: 10px; opacity: .4; }
+.pf__streaks i:nth-child(7) { top: 88%; height: 2px; opacity: .8; }
+.pf__crowd { position: absolute; left: 0; right: 0; bottom: 0; height: 50%; }
+.fig-wrap { position: absolute; bottom: 0; display: block; height: var(--h); aspect-ratio: 1 / 3; will-change: transform; }
+.fig { display: block; width: 100%; height: 100%; fill: #1a0803; filter: blur(var(--b)); opacity: var(--o); overflow: visible; }
+.fig-wrap--1 { left: 7%;  --h: 52%; --b: 7px; --o: .75; }
+.fig-wrap--2 { left: 21%; --h: 74%; --b: 3px; --o: .9; }
+.fig-wrap--3 { left: 41%; --h: 94%; --b: 1.5px; --o: .96; }
+.fig-wrap--4 { left: 57%; --h: 62%; --b: 5px; --o: .85; }
+.fig-wrap--5 { left: 73%; --h: 82%; --b: 2.5px; --o: .92; }
+.fig-wrap--6 { left: 88%; --h: 46%; --b: 8px; --o: .7; }
+.pf__fade { position: absolute; inset: 0; background: linear-gradient(to bottom, #0a0a0a 0%, #0a0a0a 20%, rgba(10, 10, 10, .5) 36%, rgba(10, 10, 10, 0) 54%); }
+
+.pf__content { position: relative; z-index: 2; flex: 1; display: flex; flex-direction: column; padding: 120px 28px 0; }
+.pf__row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; align-items: start; }
+.pf__row--top { align-items: start; }
+.pf__row--bottom { margin-top: auto; padding-top: 70px; align-items: end; }
+.pf__nav { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+.roll { position: relative; display: inline-block; overflow: hidden; color: #fff; text-decoration: none; font: 300 28px/1.25 var(--f-soft); }
+.roll span { display: block; transition: transform .45s cubic-bezier(.2, .8, .2, 1); }
+.roll::after { content: attr(data-t); position: absolute; left: 0; top: 100%; color: #ffb36b; transition: transform .45s cubic-bezier(.2, .8, .2, 1); }
+.roll:hover span, .roll:hover::after, .roll:focus-visible span, .roll:focus-visible::after { transform: translateY(-100%); }
+.roll[aria-current="page"] span { color: rgba(255, 255, 255, .5); }
+.pf__mid { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
+.pf__label { margin: 0; font: 400 15px/1.4 var(--f-soft); color: rgba(255, 255, 255, .85); }
+.pf__text { margin: 0; max-width: 30ch; font: 300 15px/1.35 var(--f-soft); color: rgba(255, 255, 255, .72); }
+.pf__text--r { text-align: right; max-width: 22ch; }
+.pf__social { display: flex; gap: 10px; margin-top: 26px; }
+.pf__social a { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 10px; background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .14); transition: background .3s, border-color .3s; }
+.pf__social a:hover { background: rgba(255, 255, 255, .2); border-color: rgba(255, 255, 255, .5); }
+.pf__social img { width: 16px; height: 16px; opacity: .9; }
+.pf__right { display: flex; flex-direction: column; align-items: flex-end; gap: 14px; }
+.pf__badge { display: flex; flex-direction: column; align-items: center; gap: 6px; width: 94px; padding: 14px 8px 10px; border-radius: 14px; text-decoration: none; color: #fff; background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .16); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); transition: background .3s, transform .3s; }
+.pf__badge:hover { background: rgba(255, 255, 255, .16); transform: translateY(-3px); }
+.pf__badge img { width: 28px; filter: drop-shadow(0 0 8px rgba(255, 255, 255, .7)); }
+.pf__badge span { font: 400 11px/1.2 var(--f-soft); text-align: center; }
+.pf__badge small { width: 100%; padding-top: 6px; border-top: 1px solid rgba(255, 255, 255, .16); text-align: center; font: 300 9px/1.2 var(--f-soft); color: rgba(255, 255, 255, .6); }
+.pf__small { margin: 0; font: 300 15px/1.3 var(--f-soft); color: rgba(255, 255, 255, .72); }
+.pf__small--r { text-align: right; }
+.pf__topbtn { justify-self: center; background: none; border: 0; padding: 4px 0; cursor: pointer; text-align: center; transition: color .25s; }
+.pf__topbtn:hover { color: #fff; }
+.pf__mark { margin: 28px 0 0; padding: 0; white-space: nowrap; line-height: .82; color: #fff; display: block; width: max-content; }
+.pf__heavy, .pf__light { display: inline-block; }
+.pf__heavy { font-family: var(--f-display); font-weight: 800; letter-spacing: -.045em; transform: skewX(-9deg); transform-origin: 0 100%; }
+.pf__light { font-family: var(--f-soft); font-weight: 200; letter-spacing: -.03em; transition: font-weight .5s, letter-spacing .5s; }
+.pf__mark:hover .pf__light { font-weight: 400; }
+.pf__mark .pf__heavy, .pf__mark .pf__light { cursor: default; }
+
 /* ==========================================================================
    Narrow screens
    ========================================================================== */
@@ -359,6 +433,17 @@ body.podcast-page {
   .capsule-float { margin-top: 150px; }
   .podcast-page .right-links { display: none; }
   .podcast-page .logo-area img { width: 30px; }
+  .pf { padding: 6px 6px 50px; }
+  .pf__card { min-height: 640px; border-radius: 22px; }
+  .pf__content { padding: 90px 18px 0; }
+  .pf__row { grid-template-columns: 1fr; gap: 28px; }
+  .pf__mid { align-items: flex-start; text-align: left; }
+  .pf__right { align-items: flex-start; }
+  .pf__text--r { text-align: left; }
+  .pf__row--bottom { grid-template-columns: 1fr 1fr; padding-top: 40px; }
+  .pf__topbtn { grid-column: 1 / -1; grid-row: 2; justify-self: start; }
+  .pf__small--r { text-align: right; }
+  .roll { font-size: 24px; }
   .sec-label { left: 14px; }
   .cta-fixed { right: 14px; padding: 11px 18px; }
   .ruler { padding: 0 14px; }
