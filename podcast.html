@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hemant | Podcast trailers and editing</title>
+  <meta name="description" content="Podcast trailers, full-episode edits and vertical clips by Hemant Malviya." />
+
+  <!-- Two extra fonts for this page only: Unbounded (display) and DM Mono (micro labels).
+       Body copy and the nav keep using your SF Pro Display files from Style.css. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Unbounded:wght@300..900&display=swap" rel="stylesheet" />
+
+  <script>document.documentElement.classList.add("js")</script>
+  <link rel="stylesheet" href="Style.css" />
+  <link rel="stylesheet" href="podcast.css" />
+</head>
+<body class="podcast-page">
+
+  <!-- Fixed background layers -->
+  <div class="field" aria-hidden="true"></div>
+  <div class="spot spot--slow" aria-hidden="true"></div>
+  <div class="spot spot--fast" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Custom cursor (only switched on for mouse / trackpad) -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <span class="cursor__dot"></span>
+    <span class="cursor__ring"><span class="cursor__shape"><span class="cursor__label"></span></span></span>
+  </div>
+
+  <!-- Scroll ruler: shows progress, jumps on click -->
+  <div class="ruler" id="ruler" role="presentation" data-cursor="Jump">
+    <div class="ruler__ticks" id="rulerTicks"></div>
+    <span class="ruler__tip" id="rulerTip"></span>
+  </div>
+
+  <!-- Current section name -->
+  <p class="sec-label" aria-live="polite"><span class="sec-label__mask"><span id="secLabelText">The trailer</span></span><span class="sec-label__arrow" aria-hidden="true">↓</span></p>
+
+  <!-- Navigation (same markup as your other pages, plus Podcast) -->
+  <div class="navbar">
+    <div class="logo-area">
+      <img src="logo.svg" alt="Logo" />
+      <div class="kanji">平満翔</div>
+    </div>
+
+    <div class="center-nav">
+      <button onclick="location.href='index.html'">Portfolio</button>
+      <button onclick="location.href='podcast.html'" class="active">Podcast</button>
+      <button onclick="location.href='Info.html'">Info</button>
+      <div class="nav-indicator"></div>
+    </div>
+
+    <div class="right-links">
+      <a href="https://www.instagram.com/_vixvo/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/posts/hemant-malviya-82872825b_showreel2024-videoeditor-3d-activity-7282058799908110336-Cv-6/?utm_source=social_share_send&utm_medium=android_app&rcm=ACoAAEAAYKABEGWyuX9QHnmvgK_JB7vQSyrjb7Y&utm_campaign=whatsapp" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+
+  <a class="cta-fixed" id="ctaFixed" href="Info.html#contact" data-magnetic>Book an edit</a>
+
+  <main id="main">
+
+    <!-- 1. HERO -->
+    <section class="scene hero" id="hero" data-label="The trailer" data-c1="#FF8A1F" data-c2="#E5381C">
+      <div class="hero__ghosts" aria-hidden="true">
+        <svg class="ghost ghost--a" viewBox="0 0 300 400"><circle cx="150" cy="108" r="64"/><path d="M10 400C10 300 66 246 150 246s140 54 140 154z"/></svg>
+        <svg class="ghost ghost--b" viewBox="0 0 300 400"><circle cx="150" cy="108" r="64"/><path d="M10 400C10 300 66 246 150 246s140 54 140 154z"/></svg>
+      </div>
+
+      <h1 class="hero__title" aria-label="Podcast cuts">
+        <span class="line line--a" aria-hidden="true">Podcast</span>
+        <span class="line line--b" aria-hidden="true">Cuts</span>
+      </h1>
+
+      <div class="capsule-float" id="capsuleFloat">
+        <div class="capsule-tilt" id="capsuleTilt">
+          <div class="capsule capsule--hero" id="heroCapsule" role="button" tabindex="0" aria-pressed="false"
+               aria-label="Make the waveform pulse" data-cursor="Pulse"></div>
+        </div>
+      </div>
+
+      <p class="micro micro--l">Trailers that make people press play. Edits that keep them listening.</p>
+      <p class="micro micro--r">Audio and video podcast editing for shows that publish on a schedule.</p>
+      <p class="micro micro--b">Send the raw files. Get back the trailer, the episode and clips for your feed.</p>
+
+      <button class="side-link side-link--l" id="playToggle" type="button" aria-pressed="false">Pulse the wave</button>
+      <a class="side-link side-link--r" id="seeCuts" href="#cuts">See the cuts</a>
+    </section>
+
+    <!-- 2. WHAT YOU GET -->
+    <section class="scene cuts" id="cuts" data-label="The cuts" data-c1="#2A1612" data-c2="#0E0A09">
+      <div class="cuts__head">
+        <h2 class="display">What comes back from one raw upload</h2>
+        <p class="body">Five things I make for podcasters. Point at each one to see what changes.</p>
+      </div>
+
+      <div class="bento">
+        <article class="tile tile--trailer" data-cursor="Scrub">
+          <header class="tile__head">
+            <h3>Trailer</h3>
+            <p>The best moments of an episode, cut into a short teaser that sells the full thing.</p>
+          </header>
+          <div class="mini-tl" aria-hidden="true">
+            <div class="mini-tl__clips"></div>
+            <div class="mini-tl__head"></div>
+          </div>
+          <span class="mini-tl__time" aria-hidden="true">00:00</span>
+        </article>
+
+        <article class="tile tile--edit">
+          <header class="tile__head">
+            <h3>Full-episode edit</h3>
+            <p>Dead air, false starts and filler come out. Point at or tap the filler words to cut them.</p>
+          </header>
+          <p class="transcript">So, <button class="f" type="button" data-cursor="Cut" data-dur="0.6">um,</button>today we're talking about how a show finds its audience. It's <button class="f" type="button" data-cursor="Cut" data-dur="0.5">like,</button>the part nobody plans for, <button class="f" type="button" data-cursor="Cut" data-dur="0.8">you know,</button>and it decides <button class="f" type="button" data-cursor="Cut" data-dur="0.4">uh,</button>everything.</p>
+          <footer class="edit__bar">
+            <span class="edit__count" aria-live="polite">0.0s trimmed</span>
+            <button class="edit__reset" type="button">Put them back</button>
+          </footer>
+        </article>
+
+        <article class="tile tile--clips" data-cursor="Restyle">
+          <header class="tile__head">
+            <h3>Vertical clips</h3>
+            <p>Captioned cuts for Reels, Shorts and TikTok. Click to change the caption style.</p>
+          </header>
+          <div class="phone" data-style="0" role="button" tabindex="0" aria-label="Change caption style">
+            <div class="phone__screen">
+              <p class="caps"><span class="cap-word">Your</span> <span class="cap-word">best</span> <span class="cap-word">thirty</span> <span class="cap-word">seconds</span></p>
+            </div>
+          </div>
+          <span class="clips__style">Style 1 of 3</span>
+        </article>
+
+        <a class="tile tile--talking" href="Allproject.html" data-cursor="Open">
+          <img src="talking headd.png" alt="Thumbnail of the Talking Head video" loading="lazy" />
+          <div class="tile__head tile__head--over">
+            <h3>Talking-head edits</h3>
+            <p>Single-camera video, cut tight.</p>
+          </div>
+        </a>
+
+        <article class="tile tile--clean" data-cursor="Clean">
+          <header class="tile__head">
+            <h3>Audio cleanup</h3>
+            <p>Move across the waveform to clean up the noise.</p>
+          </header>
+          <canvas class="clean__wave" aria-hidden="true"></canvas>
+          <footer class="edit__bar"><span class="clean__pct" aria-live="polite">0% cleaned</span><button class="edit__reset clean__reset" type="button">Add the noise back</button></footer>
+        </article>
+      </div>
+    </section>
+
+    <!-- 3. PROCESS (pinned on desktop: scroll or click to move through the steps) -->
+    <section class="scene process" id="process" data-label="The process" data-c1="#7C9A86" data-c2="#1F3327">
+      <div class="process__tabs" role="tablist" aria-label="How an edit works">
+        <button class="pill" role="tab" id="tab-0" aria-selected="true" aria-controls="processPanel" type="button">Send files</button>
+        <button class="pill" role="tab" id="tab-1" aria-selected="false" aria-controls="processPanel" tabindex="-1" type="button">Rough cut</button>
+        <button class="pill" role="tab" id="tab-2" aria-selected="false" aria-controls="processPanel" tabindex="-1" type="button">Polish</button>
+        <button class="pill" role="tab" id="tab-3" aria-selected="false" aria-controls="processPanel" tabindex="-1" type="button">Delivered</button>
+      </div>
+
+      <div class="process__stage" id="processPanel" role="tabpanel" aria-labelledby="tab-0">
+        <div class="process__title-wrap"><h2 class="process__title display" id="processTitle">Send files</h2></div>
+        <div class="process__capsule-float" id="processFloat">
+          <div class="capsule capsule--process" id="processCapsule" aria-hidden="true"></div>
+        </div>
+        <div class="process__copy">
+          <span class="process__count" id="processCount">01 / 04</span>
+          <p class="body" id="processText">Upload the raw video or audio, plus a short note on the tone you want and any moments to keep.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. WORK (pinned horizontal scroll on desktop) -->
+    <section class="scene work" id="work" data-label="The work" data-c1="#1E1E1E" data-c2="#0B0B0B">
+      <div class="work__track" id="workTrack">
+        <div class="work__intro">
+          <h2 class="display">Recent edits</h2>
+          <p class="body">Talking-head and podcast cuts. Yours could be next.</p>
+        </div>
+
+        <!-- To add a finished piece: copy one <article class="case case--real"> block and change the link, image, title and line. -->
+        <article class="case case--real">
+          <a class="case__link" href="Allproject.html" data-cursor="Open">
+            <div class="case__media"><img src="talking headd.png" alt="Thumbnail of the Talking Head video" loading="lazy" /></div>
+            <div class="case__meta"><h3>Talking Head</h3><p>Talking-head video edit</p></div>
+          </a>
+        </article>
+
+        <article class="case case--slot">
+          <a class="case__link" href="Info.html#contact" data-cursor="Send files">
+            <div class="case__media slot__wave" aria-hidden="true"></div>
+            <div class="case__meta"><h3>Your trailer</h3><p>Send the raw episode and get a teaser back.</p></div>
+          </a>
+        </article>
+
+        <article class="case case--slot">
+          <a class="case__link" href="Info.html#contact" data-cursor="Send files">
+            <div class="case__media slot__wave slot__wave--b" aria-hidden="true"></div>
+            <div class="case__meta"><h3>Your next episode</h3><p>Send the raw files and get a finished edit back.</p></div>
+          </a>
+        </article>
+      </div>
+      <div class="work__bar" aria-hidden="true"><span id="workBar"></span></div>
+    </section>
+
+    <!-- 5. CLOSING CTA -->
+    <section class="scene cta" id="cta" data-label="Your episode" data-c1="#FF8A1F" data-c2="#E5381C">
+      <h2 class="cta__title" id="ctaTitle" aria-label="Send me the raw files">
+        <span class="line" aria-hidden="true">Send me</span>
+        <span class="line" aria-hidden="true">the raw files</span>
+      </h2>
+      <p class="body cta__copy">Tell me about your show and I'll reply with how I'd cut it.</p>
+      <a class="btn-pill" href="Info.html#contact" data-magnetic>Book an edit</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <button onclick="location.href='Allproject.html'" class="all-projects-btn">All Projects</button>
+      <div class="emoji-footer">
+        <img src="Group 6.svg" alt="" />
+        <img src="Star 1.svg" alt="" />
+        <img src="Star 2.svg" alt="" />
+        <img src="Group 5.svg" alt="" />
+        <img src="Star 3.svg" alt="" />
+        <img src="Vector 1.svg" alt="" />
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-left">
+        <img src="logo.svg" alt="Logo" class="footer-logo" />
+        <p>© 2025 Hemant Malviya. All Rights Reserved.</p>
+      </div>
+      <div class="footer-right">
+        <div class="footer-links">
+          <p><strong>Site Map</strong></p>
+          <a href="index.html">Portfolio</a>
+          <a href="podcast.html">Podcast</a>
+          <a href="Info.html">Info</a>
+          <a href="Allproject.html">All Projects</a>
+        </div>
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/posts/hemant-malviya-82872825b_showreel2024-videoeditor-3d-activity-7282058799908110336-Cv-6/?utm_source=social_share_send&utm_medium=android_app&rcm=ACoAAEAAYKABEGWyuX9QHnmvgK_JB7vQSyrjb7Y&utm_campaign=whatsapp"><img src="Linkedin.svg" alt="LinkedIn" /></a>
+          <a href="https://www.instagram.com/_vixvo/"><img src="Instagram.svg" alt="Instagram" /></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Same GSAP version your site already uses, plus smooth scrolling -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="podcast.js"></script>
+</body>
+</html>
